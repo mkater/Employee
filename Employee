@@ -1,0 +1,50 @@
+public class Employee {
+    private String name;
+    private String title;
+    private String birthday;
+    private Company company;
+
+    public Employee(final String name, final String title, final String birthday, final Company company) {
+        if (name == null ||  0 == name.length() || title == null || company == null || birthday == null) {
+            throw new IllegalArgumentException();
+        }
+            this.name = name;
+            this.title = title;
+            this.birthday = birthday;
+            this.company = company;
+        }
+
+    public String getName() {
+        return name;
+    }
+
+
+    public String getTitle() {
+        return title;
+    }
+
+
+    public String getBirthday() {
+        return birthday;
+    }
+
+
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(final Company company) {
+        this.company = company;
+    }
+
+    @Override
+    public boolean equals(final Object obj) {
+        boolean result = false;
+        if (obj != null && obj instanceof Employee) {
+            final Employee e3 = (Employee) obj;
+            result = name.equals(e3.getName()) && birthday.equals(e3.getBirthday()) && title.equals(e3.getTitle()) && company.equals(e3.getCompany());
+        }
+        return result;
+    }
+
+}
