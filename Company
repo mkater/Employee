@@ -1,0 +1,40 @@
+public class Company {
+
+    private String name;
+    private int numberOfEmployees;
+
+    public Company (final String name, final int numberOfEmployees){
+        if (name == null || 0 == name.length() || numberOfEmployees <= 0){
+            throw new IllegalArgumentException();
+        }
+
+        this.name = name;
+        this.numberOfEmployees = numberOfEmployees;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getNumberOfEmployees() {
+        return numberOfEmployees;
+    }
+
+    public void setNumberOfEmployees(int numberOfEmployees) {
+        this.numberOfEmployees = numberOfEmployees;
+    }
+
+    @Override
+    public boolean equals(final Object obj){
+        boolean result = false;
+        if(obj!=null && obj instanceof Company) {
+            final Company c3 = (Company) obj;
+            result = name.equals(c3.getName()) && numberOfEmployees == c3.getNumberOfEmployees();
+        }
+        return result;
+    }
+}
