@@ -8,48 +8,53 @@ public class EmployeeTest {
     Employee e1, e2;
 
     @Before
-   public void setup() {
-       c1 = new Company("Google", 10000);
-       c2 = new Company("Amazon", 50000);
+    public void setup() {
+        c1 = new Company("Google", 10000);
+        c2 = new Company("Amazon", 50000);
 
-       e1 = new Employee("Morty Smith", "President", "02041990", c1);
-       e2 = new Employee("Jason Jones", "CEO", "01042000", c2);
-   }
+        e1 = new Employee("Morty Smith", "President", "02041990", c1);
+        e2 = new Employee("Jason Jones", "CEO", "01041988", c2);
+    }
 
     @Test
     public void employeeComplete() {
-        //
-        assertTrue(e1.equals(e1));
-        // assertTrue( employee is alive and company complies with child labor laws ...;
-        //...
-
+        assertTrue(e1.getBirthday() != null);
+        assertTrue(Integer.parseInt(e1.getBirthday()) % 10000 < (2017 - 18)); // Employee not too young
+        assertTrue(Integer.parseInt(e1.getBirthday()) % 10000 > (2017 - 75));
+        assertTrue(e1.getName() != null);
+        assertTrue(e1.getTitle() != null);
+        assertTrue(e1.getCompany() != null);
     }
-        /**
-         * Check Employee Equality
-         */
-        @Test
-        public void employeeEq() {
-           Employee eX = new Employee("Morty Smith", "President", "02041990", c1);
-           assertTrue(e1.equals(eX));
+
+    /**
+     * Check Employee Equality
+     */
+    @Test
+    public void employeeEq() {
+        Employee eX = new Employee("Morty Smith", "President", "02041990", c1);
+        assertTrue(e1.equals(eX));
 
         eX.setCompany(c2);
         assertNotEquals(e1, eX);
 
-        }
+    }
 
-        /**
-         * Check Company Equality
-         */
-        @Test
-        public void companyEq() {
+    @Test
+    public void companyComplete() {
+       assertTrue(c1.getName() != null);
+       assertTrue(c1.getNumberOfEmployees() > 0);
+    }
 
-            Company cX = new Company("Google", 10000);
-            assertTrue(c1.equals(cX));
+    @Test
+    public void companyEq() {
 
-            // modify company c2, i.e. change its name or create another company with a different name ..
-            cX.setName("Microsoft");
-            assertNotEquals(c1, cX);
+        Company cX = new Company("Google", 10000);
+        assertTrue(c1.equals(cX));
 
-        }
+        // modify company c2, i.e. change its name or create another company with a different name ..
+        cX.setName("Microsoft");
+        assertNotEquals(c1, cX);
 
     }
+
+}
