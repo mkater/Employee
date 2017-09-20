@@ -1,0 +1,55 @@
+import static org.junit.Assert.*;
+import org.junit.Test;
+import org.junit.Before;
+
+public class EmployeeTest {
+
+    Company c1, c2;
+    Employee e1, e2;
+
+    @Before
+   public void setup() {
+       c1 = new Company("Google", 10000);
+       c2 = new Company("Amazon", 50000);
+
+       e1 = new Employee("Morty Smith", "President", "02041990", c1);
+       e2 = new Employee("Jason Jones", "CEO", "01042000", c2);
+   }
+
+    @Test
+    public void employeeComplete() {
+        //
+        assertTrue(e1.equals(e1));
+        // assertTrue( employee is alive and company complies with child labor laws ...;
+        //...
+
+    }
+        /**
+         * Check Employee Equality
+         */
+        @Test
+        public void employeeEq() {
+           Employee eX = new Employee("Morty Smith", "President", "02041990", c1);
+           assertTrue(e1.equals(eX));
+
+        eX.setCompany(c2);
+        assertNotEquals(e1, eX);
+
+        }
+
+        /**
+         * Check Company Equality
+         */
+        @Test
+        public void companyEq() {
+
+            Company cX = new Company("Google", 10000);
+            assertTrue(c1.equals(cX));
+
+            // modify company c2, i.e. change its name or create another company with a different name ..
+            cX.setName("Microsoft");
+            assertNotEquals(c1, cX);
+
+        }
+
+    }
